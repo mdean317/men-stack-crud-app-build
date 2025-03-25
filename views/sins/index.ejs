@@ -1,0 +1,36 @@
+<!-- views/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sins App</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+
+<body>
+  <body>
+    <div class="index-header-div">
+      <h1>All Sins</h1>
+      <a class="add-sin" href="/sins/new">Add sin</a>
+    </div>
+    <ul>
+      <% sins.forEach((sin)=> { %>
+      <li>
+        <a class="sin-cards" href="/sins/<%=sin._id%>">
+          <%= sin.name %>
+        </a>
+      </li>
+      <% }) %>
+    </ul>
+
+  <a class="sins-index-link" href="/sins">
+    <div class="index-link-text">Back to Sins</div>
+  </a>
+  <a class="add-sin" href="/sins/new">Add sin</a>
+
+</body>
+<footer>Icons by <a href="https://www.flaticon.com/authors/freepik">Freekpik</a></footer>
+
+</html>

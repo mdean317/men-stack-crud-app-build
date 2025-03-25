@@ -1,0 +1,32 @@
+!DOCTYPE html>
+<html lang="en"> 
+<head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Create a Sin</title>
+        <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+
+<body>
+    <h1>Edit <%= sin.name %></h1>
+    <form action="/sins/<%=sin._id%>?_method=PUT" method="POST">
+      <label for="name">Name:</label>
+      <input type="text" name="name" value="<%= sin.name %>" />
+      <label for="best-activity">Best Activity:</label>
+      <input type="text" name="best-activity" value="<%= sin.bestActivity %>" />
+      <label for="worst-activity">Worst Activity:</label>
+      <input type="text" name="worst-activity" value="<%= sin.worstActivity %>" />
+      <div class="checkbox-div">
+        <label for="is-deadly">Is it a Deadly sin?</label>
+        <input type="checkbox" name="id-deadly" <% if (sin.isDeadly) { %>checked<% } %> >
+      </div>  
+      <div class="checkbox-div">
+        <label for="is-fun">Is it a fun sin?</label>
+        <input type="checkbox" name="is-fun" <% if (sin.isFun) { %>checked<% } %> >
+      </div>  
+      <button type="submit">Update Sin</button>
+    </form>
+    <a class="sins-index-link" href="/sins">
+        <div class="index-link-text">Back to Sins</div>
+    </a>
+</body>

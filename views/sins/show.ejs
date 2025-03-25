@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= sin.name %></title> 
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+
+<body>
+    <div class="sin-details"></div>
+    <h1><%= sin.name %></h1>
+    <% if (sin.isDeadly) { %>
+      <p>This is one of the deadly sins! </p>
+    <% } else { %>
+      <p>This isn't a deadly sin!</p>
+    <% } %>
+    <% if (sin.isFun) { %>
+      <p>And so fun to do!</p>
+    <% } else { %>
+      <p>But not so fun to do.</p>
+    <% } %>
+
+    <h3>Best Activity: <%= sin.bestActivity %></h3>
+    <h3>Worst Activity: <%= sin.worstActivity %></h3>
+
+    <div class="sin-actions">
+        <form
+          class="delete-form"
+          action="/sins/<%=sin._id%>?_method=DELETE"
+          method="POST"
+        >
+          <button class="delete-button" type="submit">
+            Delete <%= sin.name %>
+          </button>
+        </form>
+        <a class="edit-link" href="/sins/<%= sin._id %>/edit">
+          <div class="edit-text">Edit <%= sin.name %></div>
+        </a>
+      </div>
+     
+      <a class="sins-index-link" href="/sins">
+        <div class="index-link-text">Back to sins</div>
+      </a>
+  </body>  
+</html>
