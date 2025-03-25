@@ -65,7 +65,7 @@ app.get("/sins", async (req, res) => {
 // Show and EDIT sin
 app.get("/sins/:sinId/edit", async (req, res) => {
   const foundSin = await Sin.findById(req.params.sinId);
-  console.log(foundSin);
+  console.log("first" + foundSin);
   res.render(`sins/edit.ejs`, {sin: foundSin});
 });
 
@@ -87,16 +87,13 @@ app.post("/sins", async (req, res) => {
   } else {
     req.body.isFun = false;
   }
-  console.log(req.body.name);
-  console.log(req.body.isFun);
-  console.log(req.body.bestActivity);
-  console.log(req.body.worstActivity);
   await Sin.create(req.body);
   res.redirect("/sins");
 });
 
 // PUT Method - update sin
 app.put("/sins/:sinId", async (req, res) => {
+
   // Handle the checkbox data
   if (req.body.isDeadly === "on") {
     req.body.isDeadly = true;
@@ -108,7 +105,6 @@ app.put("/sins/:sinId", async (req, res) => {
   } else {
     req.body.isFun = false;
   }
-  
   // Update the sin in the database
   await Sin.findByIdAndUpdate(req.params.sinId, req.body);
 
